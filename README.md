@@ -1,5 +1,7 @@
 # neodb
-NextDB is a db project that will focus on:
-1. immutability
-2. 'effective' retrievability
-3. 'universal' storage (for images, text, video, sql, etc)
+NextDB is a db project that focuses on:
+1. Immutable values
+2. 'Effective' retrievability
+3. 'Universal' storage (for images, text, video, sql, etc)
+4. Multi-dimensional value model
+5. Distributed data
