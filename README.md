@@ -1,4 +1,5 @@
-# neodb
+#clojure
+#neodb
 NextDB is a db project that focuses on:
 1. Immutable values
 2. 'Effective' retrievability
