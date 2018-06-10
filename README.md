@@ -1,4 +1,8 @@
 #clojure
+#opengl
+#msound
+#menergy
+(value+where+when)
 #neodb
 NextDB is a db project that focuses on:
 1. Immutable values
