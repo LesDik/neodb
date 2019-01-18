@@ -1,0 +1,11 @@
+"{
+\"dbgrh\":
+     {\"host\":\"178.62.81.103\",\"port\":\"2424\",
+      \"dbname\":\"graphdb\",
+      \"username\":\"root\",\"password\":\"rootpwd\"},
+\"dbsql\":
+     {\"host\":\"127.0.0.1\",\"port\":\"5984\",
+      \"dbname\":\"deadsql\", 
+      \"username\":\"postgres\",\"password\":\"postgres\"},
+\"server\":{\"host\":\"46.101.85.64\",\"port\":\"76\" }
+}"

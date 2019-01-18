@@ -1,0 +1,13 @@
+* * * * * cd /progs/muchiniwamback/ && ./electrocute.sh
+# cd folder_containing_exe && ./exe_name ./electrocute.sh
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+@weekly svnadmin dump /svn/deadsql/ > /backups/deadsql.dump
+@weekly svnadmin dump /svn/visualsql/ > /backups/visualsql.dump
+@weekly svnadmin dump /svn/dbprotocols/ > /backups/dbprotocols.dump
+@weekly svnadmin dump /svn/joseph/ > /backups/joseph.dump
+@weekly svnadmin dump /svn/frontend/ > /backups/frontend.dump
+@weekly svnadmin dump /svn/appbackend/ > /backups/appackendsql.dump
+@weekly scp -r /backups/* root@178.62.81.103:/data/
+@daily scp -r /progs/deadsql/* root@178.62.81.103:/progs/deadsql/

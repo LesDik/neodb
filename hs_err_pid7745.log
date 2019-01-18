@@ -1,0 +1,651 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 71303168 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2640), pid=7745, tid=0x00007fab332fa700
+#
+# JRE version: Java(TM) SE Runtime Environment (8.0_144-b01) (build 1.8.0_144-b01)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.144-b01 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fab48078800):  VMThread [stack: 0x00007fab331fa000,0x00007fab332fb000] [id=7754]
+
+Stack: [0x00007fab331fa000,0x00007fab332fb000],  sp=0x00007fab332f91a0,  free space=1020k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xacb18a]  VMError::report_and_die()+0x2ba
+V  [libjvm.so+0x4ff4db]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x8b
+V  [libjvm.so+0x927d23]  os::Linux::commit_memory_impl(char*, unsigned long, bool)+0x103
+V  [libjvm.so+0x928279]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0x29
+V  [libjvm.so+0x92249a]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2a
+V  [libjvm.so+0x996ff3]  PSVirtualSpace::expand_by(unsigned long)+0x53
+V  [libjvm.so+0x9983f8]  PSYoungGen::resize_generation(unsigned long, unsigned long)+0xf8
+V  [libjvm.so+0x997552]  PSYoungGen::resize(unsigned long, unsigned long)+0x22
+V  [libjvm.so+0x99482b]  PSScavenge::invoke_no_policy()+0xf3b
+V  [libjvm.so+0x994fb1]  PSScavenge::invoke()+0x41
+V  [libjvm.so+0x94bce0]  ParallelScavengeHeap::failed_mem_allocate(unsigned long)+0x70
+V  [libjvm.so+0xaccba7]  VM_ParallelGCFailedAllocation::doit()+0x97
+V  [libjvm.so+0xad4685]  VM_Operation::evaluate()+0x55
+V  [libjvm.so+0xad2a5a]  VMThread::evaluate_operation(VM_Operation*)+0xba
+V  [libjvm.so+0xad2dde]  VMThread::loop()+0x1ce
+V  [libjvm.so+0xad3250]  VMThread::run()+0x70
+V  [libjvm.so+0x92a338]  java_start(Thread*)+0x108
+
+VM_Operation (0x00007fab4fec7f50): ParallelGCFailedAllocation, mode: safepoint, requested by thread 0x00007fab4800e800
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x00007fab480be800 JavaThread "Service Thread" daemon [_thread_blocked, id=7760, stack(0x00007fab32a5c000,0x00007fab32b5d000)]
+  0x00007fab480bc000 JavaThread "C1 CompilerThread1" daemon [_thread_blocked, id=7759, stack(0x00007fab32b5d000,0x00007fab32c5e000)]
+  0x00007fab480b9000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=7758, stack(0x00007fab32c5e000,0x00007fab32d5f000)]
+  0x00007fab480b7800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=7757, stack(0x00007fab32d5f000,0x00007fab32e60000)]
+  0x00007fab48084800 JavaThread "Finalizer" daemon [_thread_blocked, id=7756, stack(0x00007fab32ff8000,0x00007fab330f9000)]
+  0x00007fab48080000 JavaThread "Reference Handler" daemon [_thread_blocked, id=7755, stack(0x00007fab330f9000,0x00007fab331fa000)]
+  0x00007fab4800e800 JavaThread "main" [_thread_blocked, id=7746, stack(0x00007fab4fdd4000,0x00007fab4fed5000)]
+
+Other Threads:
+=>0x00007fab48078800 VMThread [stack: 0x00007fab331fa000,0x00007fab332fb000] [id=7754]
+  0x00007fab480c1800 WatcherThread [stack: 0x00007fab3295b000,0x00007fab32a5c000] [id=7761]
+
+VM state:at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007fab4800aff0] Threads_lock - owner thread: 0x00007fab48078800
+[0x00007fab4800b4f0] Heap_lock - owner thread: 0x00007fab4800e800
+
+Heap:
+ PSYoungGen      total 73728K, used 2891K [0x00000000f5900000, 0x00000000fa500000, 0x0000000100000000)
+  eden space 69632K, 0% used [0x00000000f5900000,0x00000000f5900000,0x00000000f9d00000)
+  from space 4096K, 70% used [0x00000000f9d00000,0x00000000f9fd2ff8,0x00000000fa100000)
+  to   space 3584K, 0% used [0x00000000fa180000,0x00000000fa180000,0x00000000fa500000)
+ ParOldGen       total 22016K, used 8608K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 39% used [0x00000000e0a00000,0x00000000e12680c8,0x00000000e1f80000)
+ Metaspace       used 14327K, capacity 15606K, committed 15744K, reserved 1060864K
+  class space    used 3219K, capacity 3692K, committed 3712K, reserved 1048576K
+
+Card table byte_map: [0x00007fab4ca65000,0x00007fab4cb61000] byte_map_base: 0x00007fab4c360000
+
+Marking Bits: (ParMarkBitMap*) 0x00007fab4f291dc0
+ Begin Bits: [0x00007fab38050000, 0x00007fab38828000)
+ End Bits:   [0x00007fab38828000, 0x00007fab39000000)
+
+Polling page: 0x00007fab4fee4000
+
+CodeCache: size=245760Kb used=4450Kb max_used=4450Kb free=241309Kb
+ bounds [0x00007fab39000000, 0x00007fab39460000, 0x00007fab48000000]
+ total_blobs=2081 nmethods=1746 adapters=249
+ compilation: enabled
+
+Compilation events (10 events):
+Event: 3.426 Thread 0x00007fab480bc000 1743       1       clojure.lang.DynamicClassLoader::defineClass (43 bytes)
+Event: 3.427 Thread 0x00007fab480bc000 nmethod 1743 0x00007fab39457690 code [0x00007fab39457820, 0x00007fab39457ac8]
+Event: 3.427 Thread 0x00007fab480bc000 1744       1       java.lang.ClassLoader::defineClass (11 bytes)
+Event: 3.427 Thread 0x00007fab480bc000 nmethod 1744 0x00007fab39457c50 code [0x00007fab39457dc0, 0x00007fab39457ee8]
+Event: 3.427 Thread 0x00007fab480bc000 1741       1       java.lang.reflect.Constructor::acquireConstructorAccessor (44 bytes)
+Event: 3.428 Thread 0x00007fab480bc000 nmethod 1741 0x00007fab39457f50 code [0x00007fab394580c0, 0x00007fab394582f8]
+Event: 3.428 Thread 0x00007fab480bc000 1745       1       clojure.core$complement::invokeStatic (11 bytes)
+Event: 3.428 Thread 0x00007fab480bc000 nmethod 1745 0x00007fab39458450 code [0x00007fab394585a0, 0x00007fab394586f0]
+Event: 3.428 Thread 0x00007fab480bc000 1746       1       clojure.core$complement$fn__5391::<init> (10 bytes)
+Event: 3.428 Thread 0x00007fab480bc000 nmethod 1746 0x00007fab39458790 code [0x00007fab394588e0, 0x00007fab39458a10]
+
+GC Heap History (10 events):
+Event: 0.740 GC heap after
+Heap after GC invocations=2 (full 0):
+ PSYoungGen      total 18432K, used 1008K [0x00000000f5900000, 0x00000000f6c00000, 0x0000000100000000)
+  eden space 17408K, 0% used [0x00000000f5900000,0x00000000f5900000,0x00000000f6a00000)
+  from space 1024K, 98% used [0x00000000f6b00000,0x00000000f6bfc010,0x00000000f6c00000)
+  to   space 1024K, 0% used [0x00000000f6a00000,0x00000000f6a00000,0x00000000f6b00000)
+ ParOldGen       total 22016K, used 1790K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 8% used [0x00000000e0a00000,0x00000000e0bbfae0,0x00000000e1f80000)
+ Metaspace       used 5454K, capacity 6544K, committed 6656K, reserved 1056768K
+  class space    used 745K, capacity 746K, committed 768K, reserved 1048576K
+}
+Event: 1.025 GC heap before
+{Heap before GC invocations=3 (full 0):
+ PSYoungGen      total 18432K, used 18416K [0x00000000f5900000, 0x00000000f6c00000, 0x0000000100000000)
+  eden space 17408K, 100% used [0x00000000f5900000,0x00000000f6a00000,0x00000000f6a00000)
+  from space 1024K, 98% used [0x00000000f6b00000,0x00000000f6bfc010,0x00000000f6c00000)
+  to   space 1024K, 0% used [0x00000000f6a00000,0x00000000f6a00000,0x00000000f6b00000)
+ ParOldGen       total 22016K, used 1790K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 8% used [0x00000000e0a00000,0x00000000e0bbfae0,0x00000000e1f80000)
+ Metaspace       used 7458K, capacity 8534K, committed 8704K, reserved 1056768K
+  class space    used 1408K, capacity 1456K, committed 1536K, reserved 1048576K
+Event: 1.050 GC heap after
+Heap after GC invocations=3 (full 0):
+ PSYoungGen      total 18432K, used 1011K [0x00000000f5900000, 0x00000000f7d00000, 0x0000000100000000)
+  eden space 17408K, 0% used [0x00000000f5900000,0x00000000f5900000,0x00000000f6a00000)
+  from space 1024K, 98% used [0x00000000f6a00000,0x00000000f6afcd78,0x00000000f6b00000)
+  to   space 1024K, 0% used [0x00000000f7c00000,0x00000000f7c00000,0x00000000f7d00000)
+ ParOldGen       total 22016K, used 3523K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 16% used [0x00000000e0a00000,0x00000000e0d70c60,0x00000000e1f80000)
+ Metaspace       used 7458K, capacity 8534K, committed 8704K, reserved 1056768K
+  class space    used 1408K, capacity 1456K, committed 1536K, reserved 1048576K
+}
+Event: 1.462 GC heap before
+{Heap before GC invocations=4 (full 0):
+ PSYoungGen      total 18432K, used 18419K [0x00000000f5900000, 0x00000000f7d00000, 0x0000000100000000)
+  eden space 17408K, 100% used [0x00000000f5900000,0x00000000f6a00000,0x00000000f6a00000)
+  from space 1024K, 98% used [0x00000000f6a00000,0x00000000f6afcd78,0x00000000f6b00000)
+  to   space 1024K, 0% used [0x00000000f7c00000,0x00000000f7c00000,0x00000000f7d00000)
+ ParOldGen       total 22016K, used 3523K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 16% used [0x00000000e0a00000,0x00000000e0d70c60,0x00000000e1f80000)
+ Metaspace       used 9366K, capacity 10000K, committed 10112K, reserved 1056768K
+  class space    used 1790K, capacity 1818K, committed 1920K, reserved 1048576K
+Event: 1.488 GC heap after
+Heap after GC invocations=4 (full 0):
+ PSYoungGen      total 35840K, used 1011K [0x00000000f5900000, 0x00000000f7d00000, 0x0000000100000000)
+  eden space 34816K, 0% used [0x00000000f5900000,0x00000000f5900000,0x00000000f7b00000)
+  from space 1024K, 98% used [0x00000000f7c00000,0x00000000f7cfcd78,0x00000000f7d00000)
+  to   space 1024K, 0% used [0x00000000f7b00000,0x00000000f7b00000,0x00000000f7c00000)
+ ParOldGen       total 22016K, used 5641K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 25% used [0x00000000e0a00000,0x00000000e0f826c0,0x00000000e1f80000)
+ Metaspace       used 9366K, capacity 10000K, committed 10112K, reserved 1056768K
+  class space    used 1790K, capacity 1818K, committed 1920K, reserved 1048576K
+}
+Event: 1.982 GC heap before
+{Heap before GC invocations=5 (full 0):
+ PSYoungGen      total 35840K, used 35827K [0x00000000f5900000, 0x00000000f7d00000, 0x0000000100000000)
+  eden space 34816K, 100% used [0x00000000f5900000,0x00000000f7b00000,0x00000000f7b00000)
+  from space 1024K, 98% used [0x00000000f7c00000,0x00000000f7cfcd78,0x00000000f7d00000)
+  to   space 1024K, 0% used [0x00000000f7b00000,0x00000000f7b00000,0x00000000f7c00000)
+ ParOldGen       total 22016K, used 5641K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 25% used [0x00000000e0a00000,0x00000000e0f826c0,0x00000000e1f80000)
+ Metaspace       used 11653K, capacity 12176K, committed 12288K, reserved 1058816K
+  class space    used 2489K, capacity 2522K, committed 2560K, reserved 1048576K
+Event: 2.005 GC heap after
+Heap after GC invocations=5 (full 0):
+ PSYoungGen      total 35840K, used 1008K [0x00000000f5900000, 0x00000000fa600000, 0x0000000100000000)
+  eden space 34816K, 0% used [0x00000000f5900000,0x00000000f5900000,0x00000000f7b00000)
+  from space 1024K, 98% used [0x00000000f7b00000,0x00000000f7bfc030,0x00000000f7c00000)
+  to   space 4608K, 0% used [0x00000000fa180000,0x00000000fa180000,0x00000000fa600000)
+ ParOldGen       total 22016K, used 8224K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 37% used [0x00000000e0a00000,0x00000000e1208068,0x00000000e1f80000)
+ Metaspace       used 11653K, capacity 12176K, committed 12288K, reserved 1058816K
+  class space    used 2489K, capacity 2522K, committed 2560K, reserved 1048576K
+}
+Event: 2.687 GC heap before
+{Heap before GC invocations=6 (full 0):
+ PSYoungGen      total 35840K, used 35824K [0x00000000f5900000, 0x00000000fa600000, 0x0000000100000000)
+  eden space 34816K, 100% used [0x00000000f5900000,0x00000000f7b00000,0x00000000f7b00000)
+  from space 1024K, 98% used [0x00000000f7b00000,0x00000000f7bfc030,0x00000000f7c00000)
+  to   space 4608K, 0% used [0x00000000fa180000,0x00000000fa180000,0x00000000fa600000)
+ ParOldGen       total 22016K, used 8224K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 37% used [0x00000000e0a00000,0x00000000e1208068,0x00000000e1f80000)
+ Metaspace       used 12991K, capacity 13608K, committed 13824K, reserved 1060864K
+  class space    used 2823K, capacity 3054K, committed 3072K, reserved 1048576K
+Event: 2.698 GC heap after
+Heap after GC invocations=6 (full 0):
+ PSYoungGen      total 73216K, used 2779K [0x00000000f5900000, 0x00000000fa500000, 0x0000000100000000)
+  eden space 69632K, 0% used [0x00000000f5900000,0x00000000f5900000,0x00000000f9d00000)
+  from space 3584K, 77% used [0x00000000fa180000,0x00000000fa436fe8,0x00000000fa500000)
+  to   space 4096K, 0% used [0x00000000f9d00000,0x00000000f9d00000,0x00000000fa100000)
+ ParOldGen       total 22016K, used 8224K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 37% used [0x00000000e0a00000,0x00000000e1208068,0x00000000e1f80000)
+ Metaspace       used 12991K, capacity 13608K, committed 13824K, reserved 1060864K
+  class space    used 2823K, capacity 3054K, committed 3072K, reserved 1048576K
+}
+Event: 3.439 GC heap before
+{Heap before GC invocations=7 (full 0):
+ PSYoungGen      total 73216K, used 72411K [0x00000000f5900000, 0x00000000fa500000, 0x0000000100000000)
+  eden space 69632K, 100% used [0x00000000f5900000,0x00000000f9d00000,0x00000000f9d00000)
+  from space 3584K, 77% used [0x00000000fa180000,0x00000000fa436fe8,0x00000000fa500000)
+  to   space 4096K, 0% used [0x00000000f9d00000,0x00000000f9d00000,0x00000000fa100000)
+ ParOldGen       total 22016K, used 8224K [0x00000000e0a00000, 0x00000000e1f80000, 0x00000000f5900000)
+  object space 22016K, 37% used [0x00000000e0a00000,0x00000000e1208068,0x00000000e1f80000)
+ Metaspace       used 14327K, capacity 15606K, committed 15744K, reserved 1060864K
+  class space    used 3219K, capacity 3692K, committed 3712K, reserved 1048576K
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (8 events):
+Event: 0.040 Thread 0x00007fab4800e800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.defineClass(Ljava/lang/String;[BII)Ljava/lang/Class; name or signature does not match> (0x00000000f5907ca8) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u144/9417/hotspot/src/sh
+Event: 0.040 Thread 0x00007fab4800e800 Exception <a 'java/lang/NoSuchMethodError': Method sun.misc.Unsafe.prefetchRead(Ljava/lang/Object;J)V name or signature does not match> (0x00000000f5907f90) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u144/9417/hotspot/src/share/vm/prims/jni.c
+Event: 0.120 Thread 0x00007fab4800e800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f59ab8e0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u144/9417/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 0.120 Thread 0x00007fab4800e800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f59abaf0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u144/9417/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 0.423 Thread 0x00007fab4800e800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f5917d18) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u144/9417/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 0.423 Thread 0x00007fab4800e800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f5917f28) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u144/9417/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 0.423 Thread 0x00007fab4800e800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f591a390) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u144/9417/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+Event: 0.423 Thread 0x00007fab4800e800 Exception <a 'java/security/PrivilegedActionException'> (0x00000000f591a5a0) thrown at [/HUDSON3/workspace/8-2-build-linux-amd64/jdk8u144/9417/hotspot/src/share/vm/prims/jvm.cpp, line 1390]
+
+Events (10 events):
+Event: 3.342 loading class java/util/function/UnaryOperator done
+Event: 3.374 loading class clojure/lang/APersistentVector$Seq
+Event: 3.374 loading class clojure/lang/APersistentVector$Seq done
+Event: 3.380 Executing VM operation: Deoptimize
+Event: 3.381 Executing VM operation: Deoptimize done
+Event: 3.428 loading class clojure/core$doseq$step__5720
+Event: 3.428 loading class clojure/core$doseq$step__5720 done
+Event: 3.436 loading class clojure/lang/PersistentHashMap$ArrayNode$Iter
+Event: 3.436 loading class clojure/lang/PersistentHashMap$ArrayNode$Iter done
+Event: 3.438 Executing VM operation: ParallelGCFailedAllocation
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 fd:01 782631                             /usr/lib/jvm/java-8-oracle/jre/bin/java
+00600000-00601000 rw-p 00000000 fd:01 782631                             /usr/lib/jvm/java-8-oracle/jre/bin/java
+0061a000-0063b000 rw-p 00000000 00:00 0                                  [heap]
+e0a00000-e1f80000 rw-p 00000000 00:00 0 
+e1f80000-f5900000 ---p 00000000 00:00 0 
+f5900000-fa500000 rw-p 00000000 00:00 0 
+fe900000-100000000 ---p 00000000 00:00 0 
+100000000-1003a0000 rw-p 00000000 00:00 0 
+1003a0000-140000000 ---p 00000000 00:00 0 
+7fab08000000-7fab08021000 rw-p 00000000 00:00 0 
+7fab08021000-7fab0c000000 ---p 00000000 00:00 0 
+7fab10000000-7fab10268000 rw-p 00000000 00:00 0 
+7fab10268000-7fab14000000 ---p 00000000 00:00 0 
+7fab14000000-7fab14021000 rw-p 00000000 00:00 0 
+7fab14021000-7fab18000000 ---p 00000000 00:00 0 
+7fab18000000-7fab18021000 rw-p 00000000 00:00 0 
+7fab18021000-7fab1c000000 ---p 00000000 00:00 0 
+7fab1c000000-7fab1c04e000 rw-p 00000000 00:00 0 
+7fab1c04e000-7fab20000000 ---p 00000000 00:00 0 
+7fab20000000-7fab20021000 rw-p 00000000 00:00 0 
+7fab20021000-7fab24000000 ---p 00000000 00:00 0 
+7fab24000000-7fab24021000 rw-p 00000000 00:00 0 
+7fab24021000-7fab28000000 ---p 00000000 00:00 0 
+7fab28000000-7fab28290000 rw-p 00000000 00:00 0 
+7fab28290000-7fab2c000000 ---p 00000000 00:00 0 
+7fab2c000000-7fab2c021000 rw-p 00000000 00:00 0 
+7fab2c021000-7fab30000000 ---p 00000000 00:00 0 
+7fab3238a000-7fab3254a000 rw-p 00000000 00:00 0 
+7fab3254a000-7fab3258a000 ---p 00000000 00:00 0 
+7fab3258a000-7fab3258f000 r--s 0009a000 fd:01 527214                     /usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar
+7fab3258f000-7fab3278f000 rw-p 00000000 00:00 0 
+7fab3278f000-7fab32792000 r--s 0001f000 fd:01 795134                     /root/.m2/repository/org/hornetq/hornetq-jms-client/2.4.5.Final/hornetq-jms-client-2.4.5.Final.jar
+7fab32792000-7fab32799000 r--s 0009f000 fd:01 1299673                    /root/.m2/repository/org/postgresql/postgresql/9.4.1211/postgresql-9.4.1211.jar
+7fab32799000-7fab327a5000 r--s 00085000 fd:01 1597403                    /root/.m2/repository/org/clojure/spec.alpha/0.1.143/spec.alpha-0.1.143.jar
+7fab327a5000-7fab327a6000 r--s 00002000 fd:01 1299759                    /root/.m2/repository/clout/clout/2.1.2/clout-2.1.2.jar
+7fab327a6000-7fab327a7000 r--s 00001000 fd:01 795160                     /root/.m2/repository/org/projectodd/wunderboss/wunderboss-transactions/0.13.1/wunderboss-transactions-0.13.1.jar
+7fab327a7000-7fab327aa000 r--s 00019000 fd:01 1052733                    /root/.m2/repository/com/jolbox/bonecp/0.8.0.RELEASE/bonecp-0.8.0.RELEASE.jar
+7fab327aa000-7fab327ab000 r--s 00001000 fd:01 1299636                    /root/.m2/repository/org/clojure/core.cache/0.6.5/core.cache-0.6.5.jar
+7fab327ab000-7fab327b9000 r--s 000b2000 fd:01 795163                     /root/.m2/repository/org/jboss/narayana/jta/narayana-jta/5.0.3.Final/narayana-jta-5.0.3.Final.jar
+7fab327b9000-7fab327bc000 r--s 0000a000 fd:01 795117                     /root/.m2/repository/org/jboss/spec/javax/jms/jboss-jms-api_2.0_spec/1.0.0.Final/jboss-jms-api_2.0_spec-1.0.0.Final.jar
+7fab327bc000-7fab327be000 r--s 00006000 fd:01 794562                     /root/.m2/repository/org/projectodd/wunderboss/wunderboss-web-undertow/0.12.2/wunderboss-web-undertow-0.12.2.jar
+7fab327be000-7fab327c0000 r--s 0000c000 fd:01 1052725                    /root/.m2/repository/net/postgis/postgis-jdbc/2.1.7.2/postgis-jdbc-2.1.7.2.jar
+7fab327c0000-7fab327c1000 r--s 00001000 fd:01 1306385                    /root/.m2/repository/org/clojure/tools.logging/0.2.3/tools.logging-0.2.3.jar
+7fab327c1000-7fab327c3000 r--s 0000f000 fd:01 794560                     /root/.m2/repository/org/jboss/logging/jboss-logging/3.2.1.Final/jboss-logging-3.2.1.Final.jar
+7fab327c3000-7fab327ce000 r--s 00065000 fd:01 1052727                    /root/.m2/repository/ch/qos/logback/logback-core/1.1.3/logback-core-1.1.3.jar
+7fab327ce000-7fab327d2000 r--s 00026000 fd:01 795133                     /root/.m2/repository/org/hornetq/hornetq-jms-server/2.4.5.Final/hornetq-jms-server-2.4.5.Final.jar
+7fab327d2000-7fab327d3000 r--s 00001000 fd:01 1301763                    /root/.m2/repository/ring-cors/ring-cors/0.1.11/ring-cors-0.1.11.jar
+7fab327d3000-7fab327eb000 r--s 0021c000 fd:01 795113                     /root/.m2/repository/org/jgroups/jgroups/3.6.2.Final/jgroups-3.6.2.Final.jar
+7fab327eb000-7fab327fb000 r--s 000e9000 fd:01 795123                     /root/.m2/repository/org/hornetq/hornetq-server/2.4.5.Final/hornetq-server-2.4.5.Final.jar
+7fab327fb000-7fab32804000 r--s 0006d000 fd:01 794572                     /root/.m2/repository/io/undertow/undertow-servlet/1.3.23.Final/undertow-servlet-1.3.23.Final.jar
+7fab32804000-7fab32805000 r--s 00007000 fd:01 794590                     /root/.m2/repository/org/immutant/web/2.1.5/web-2.1.5.jar
+7fab32805000-7fab32807000 r--s 0000b000 fd:01 1301114                    /root/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-cbor/2.9.0/jackson-dataformat-cbor-2.9.0.jar
+7fab32807000-7fab32809000 r--s 00002000 fd:01 1809586                    /root/.m2/repository/riddley/riddley/0.1.12/riddley-0.1.12.jar
+7fab32809000-7fab3280c000 r--s 00015000 fd:01 783135                     /root/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar
+7fab3280c000-7fab3280d000 r--s 00001000 fd:01 1301797                    /root/.m2/repository/ring/ring-defaults/0.3.1/ring-defaults-0.3.1.jar
+7fab3280d000-7fab3280e000 r--s 00000000 fd:01 1299766                    /root/.m2/repository/crypto-random/crypto-random/1.2.0/crypto-random-1.2.0.jar
+7fab3280e000-7fab32810000 r--s 00012000 fd:01 795192                     /root/.m2/repository/org/jboss/naming/jnpserver/5.0.3.GA/jnpserver-5.0.3.GA.jar
+7fab32810000-7fab3283a000 r--s 001e9000 fd:01 778806                     /root/.m2/repository/com/google/guava/guava/15.0/guava-15.0.jar
+7fab3283a000-7fab3283b000 r--s 00000000 fd:01 795239                     /root/.m2/repository/environ/environ/1.1.0/environ-1.1.0.jar
+7fab3283b000-7fab3283f000 r--s 0004b000 fd:01 1048379                    /root/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.0/jackson-core-2.9.0.jar
+7fab3283f000-7fab32842000 r--s 0000f000 fd:01 1299678                    /root/.m2/repository/commons-fileupload/commons-fileupload/1.3.2/commons-fileupload-1.3.2.jar
+7fab32842000-7fab32843000 r--s 00001000 fd:01 1299642                    /root/.m2/repository/org/clojure/data.priority-map/0.0.7/data.priority-map-0.0.7.jar
+7fab32843000-7fab32844000 r--s 00001000 fd:01 1032251                    /root/.m2/repository/org/clojure/data.json/0.2.6/data.json-0.2.6.jar
+7fab32844000-7fab3284b000 r--s 00055000 fd:01 795111                     /root/.m2/repository/org/jboss/marshalling/jboss-marshalling-osgi/1.4.10.Final/jboss-marshalling-osgi-1.4.10.Final.jar
+7fab3284b000-7fab3284d000 r--s 0000d000 fd:01 1076386                    /root/.m2/repository/org/clojure/core.logic/0.8.11/core.logic-0.8.11.jar
+7fab3284d000-7fab3284e000 r--s 00001000 fd:01 794580                     /root/.m2/repository/org/projectodd/wunderboss/wunderboss-clojure/0.12.2/wunderboss-clojure-0.12.2.jar
+7fab3284e000-7fab32853000 r--s 00030000 fd:01 1299643                    /root/.m2/repository/org/ow2/asm/asm-all/4.2/asm-all-4.2.jar
+7fab32853000-7fab32864000 r--s 0008a000 fd:01 1820105                    /root/.m2/repository/joda-time/joda-time/2.9.7/joda-time-2.9.7.jar
+7fab32864000-7fab32865000 r--s 00004000 fd:01 1301753                    /root/.m2/repository/org/clojure/tools.namespace/0.2.11/tools.namespace-0.2.11.jar
+7fab32865000-7fab32867000 r--s 00005000 fd:01 1048382                    /root/.m2/repository/cheshire/cheshire/5.8.0/cheshire-5.8.0.jar
+7fab32867000-7fab32868000 r--s 00004000 fd:01 1052743                    /root/.m2/repository/clj-postgresql/clj-postgresql/0.7.0/clj-postgresql-0.7.0.jar
+7fab32868000-7fab3286a000 r--s 00005000 fd:01 795158                     /root/.m2/repository/org/jboss/jboss-transaction-spi/7.1.0.Final/jboss-transaction-spi-7.1.0.Final.jar
+7fab3286a000-7fab3286b000 r--s 00008000 fd:01 1299632                    /root/.m2/repository/org/clojure/tools.analyzer.jvm/0.7.0/tools.analyzer.jvm-0.7.0.jar
+7fab3286b000-7fab32871000 r--s 00033000 fd:01 787532                     /root/.m2/repository/commons-codec/commons-codec/1.6/commons-codec-1.6.jar
+7fab32871000-7fab32872000 r--s 0000a000 fd:01 801631                     /root/.m2/repository/liberator/liberator/0.15.1/liberator-0.15.1.jar
+7fab32872000-7fab32874000 r--s 00003000 fd:01 794594                     /root/.m2/repository/org/immutant/core/2.1.5/core-2.1.5.jar
+7fab32874000-7fab32875000 r--s 00004000 fd:01 794576                     /root/.m2/repository/org/jboss/spec/javax/annotation/jboss-annotations-api_1.2_spec/1.0.0.Final/jboss-annotations-api_1.2_spec-1.0.0.Final.jar
+7fab32875000-7fab32877000 r--s 00000000 fd:01 1817053                    /root/.m2/repository/org/clojure/core.specs.alpha/0.1.24/core.specs.alpha-0.1.24.jar
+7fab32877000-7fab32878000 r--s 00003000 fd:01 1299757                    /root/.m2/repository/compojure/compojure/1.6.0/compojure-1.6.0.jar
+7fab32878000-7fab32879000 r--s 00002000 fd:01 794592                     /root/.m2/repository/org/immutant/scheduling/2.1.5/scheduling-2.1.5.jar
+7fab32879000-7fab3287a000 r--s 00000000 fd:01 795136                     /root/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar
+7fab3287a000-7fab32889000 r--s 00097000 fd:01 795109                     /root/.m2/repository/org/infinispan/infinispan-commons/7.2.3.Final/infinispan-commons-7.2.3.Final.jar
+7fab32889000-7fab3288a000 r--s 00001000 fd:01 1299650                    /root/.m2/repository/com/stuartsierra/dependency/0.2.0/dependency-0.2.0.jar
+7fab3288a000-7fab3288c000 r--s 00001000 fd:01 795190                     /root/.m2/repository/org/immutant/transactions/2.1.8/transactions-2.1.8.jar
+7fab3288c000-7fab3288f000 r--s 0000e000 fd:01 795119                     /root/.m2/repository/org/projectodd/wunderboss/wunderboss-messaging/0.13.1/wunderboss-messaging-0.13.1.jar
+7fab3288f000-7fab32891000 r--s 00001000 fd:01 795114                     /root/.m2/repository/org/projectodd/wunderboss/wunderboss-messaging-hornetq/0.13.1/wunderboss-messaging-hornetq-0.13.1.jar
+7fab32891000-7fab32893000 r--s 00013000 fd:01 1809590                    /root/.m2/repository/clj-tuple/clj-tuple/0.2.2/clj-tuple-0.2.2.jar
+7fab32893000-7fab32897000 r--s 0002a000 fd:01 795124                     /root/.m2/repository/org/hornetq/hornetq-journal/2.4.5.Final/hornetq-journal-2.4.5.Final.jar
+7fab32897000-7fab32898000 r--s 00003000 fd:01 1032561                    /root/.m2/repository/hiccup/hiccup/1.0.5/hiccup-1.0.5.jar
+7fab32898000-7fab3289a000 r--s 00000000 fd:01 1052739                    /root/.m2/repository/org/clojure/java.data/0.1.1/java.data-0.1.1.jar
+7fab3289a000-7fab328a5000 r--s 00081000 fd:01 795128                     /root/.m2/repository/org/hornetq/hornetq-core-client/2.4.5.Final/hornetq-core-client-2.4.5.Final.jar
+7fab328a5000-7fab328a6000 r--s 00000000 fd:01 795176                     /root/.m2/repository/org/immutant/immutant/2.1.8/immutant-2.1.8.jar
+7fab328a6000-7fab328a7000 r--s 00001000 fd:01 1809214                    /root/.m2/repository/ring/ring-json/0.4.0/ring-json-0.4.0.jar
+7fab328a7000-7fab328a8000 r--s 00001000 fd:01 1299635                    /root/.m2/repository/org/clojure/core.memoize/0.5.9/core.memoize-0.5.9.jar
+7fab328a8000-7fab328aa000 r--s 00002000 fd:01 794586                     /root/.m2/repository/org/projectodd/wunderboss/wunderboss-scheduling/0.12.2/wunderboss-scheduling-0.12.2.jar
+7fab328aa000-7fab328ad000 r--s 0001a000 fd:01 794573                     /root/.m2/repository/org/jboss/xnio/xnio-nio/3.3.6.Final/xnio-nio-3.3.6.Final.jar
+7fab328ad000-7fab328c6000 r--s 0014f000 fd:01 795130                     /root/.m2/repository/io/netty/netty-all/4.0.13.Final/netty-all-4.0.13.Final.jar
+7fab328c6000-7fab328cf000 r--s 00076000 fd:01 794571                     /root/.m2/repository/org/jboss/xnio/xnio-api/3.3.6.Final/xnio-api-3.3.6.Final.jar
+7fab328cf000-7fab32913000 r--s 00341000 fd:01 825179                     /root/.m2/repository/org/clojure/clojure/1.9.0/clojure-1.9.0.jar
+7fab32913000-7fab32915000 r--s 00004000 fd:01 1809589                    /root/.m2/repository/potemkin/potemkin/0.4.3/potemkin-0.4.3.jar
+7fab32915000-7fab32916000 r--s 00005000 fd:01 1820107                    /root/.m2/repository/clj-time/clj-time/0.14.0/clj-time-0.14.0.jar
+7fab32916000-7fab32917000 r--s 00003000 fd:01 795157                     /root/.m2/repository/org/jboss/spec/javax/interceptor/jboss-interceptors-api_1.2_spec/1.0.0.Final/jboss-interceptors-api_1.2_spec-1.0.0.Final.jar
+7fab32917000-7fab32921000 r--s 00098000 fd:01 794583                     /root/.m2/repository/org/quartz-scheduler/quartz/2.2.1/quartz-2.2.1.jar
+7fab32921000-7fab32922000 r--s 00000000 fd:01 1299767                    /root/.m2/repository/crypto-equality/crypto-equality/1.0.0/crypto-equality-1.0.0.jar
+7fab32922000-7fab3292c000 r--s 00065000 fd:01 795139                     /root/.m2/repository/org/jboss/jboss-common-core/2.2.10.GA/jboss-common-core-2.2.10.GA.jar
+7fab3292c000-7fab3295b000 r--s 00273000 fd:01 795106                     /root/.m2/repository/org/infinispan/infinispan-core/7.2.3.Final/infinispan-core-7.2.3.Final.jar
+7fab3295b000-7fab3295c000 ---p 00000000 00:00 0 
+7fab3295c000-7fab32a5c000 rw-p 00000000 00:00 0 
+7fab32a5c000-7fab32a5f000 ---p 00000000 00:00 0 
+7fab32a5f000-7fab32b5d000 rw-p 00000000 00:00 0 
+7fab32b5d000-7fab32b60000 ---p 00000000 00:00 0 
+7fab32b60000-7fab32c5e000 rw-p 00000000 00:00 0 
+7fab32c5e000-7fab32c61000 ---p 00000000 00:00 0 
+7fab32c61000-7fab32d5f000 rw-p 00000000 00:00 0 
+7fab32d5f000-7fab32d62000 ---p 00000000 00:00 0 
+7fab32d62000-7fab32e60000 rw-p 00000000 00:00 0 
+7fab32e60000-7fab32ff8000 r--p 00000000 fd:01 7964                       /usr/lib/locale/locale-archive
+7fab32ff8000-7fab32ffb000 ---p 00000000 00:00 0 
+7fab32ffb000-7fab330f9000 rw-p 00000000 00:00 0 
+7fab330f9000-7fab330fc000 ---p 00000000 00:00 0 
+7fab330fc000-7fab331fa000 rw-p 00000000 00:00 0 
+7fab331fa000-7fab331fb000 ---p 00000000 00:00 0 
+7fab331fb000-7fab34000000 rw-p 00000000 00:00 0 
+7fab34000000-7fab34021000 rw-p 00000000 00:00 0 
+7fab34021000-7fab38000000 ---p 00000000 00:00 0 
+7fab38000000-7fab38001000 r--s 00001000 fd:01 1299758                    /root/.m2/repository/medley/medley/1.0.0/medley-1.0.0.jar
+7fab38001000-7fab38004000 r--s 00006000 fd:01 795162                     /root/.m2/repository/org/jboss/spec/javax/resource/jboss-connector-api_1.5_spec/1.0.0.Final/jboss-connector-api_1.5_spec-1.0.0.Final.jar
+7fab38004000-7fab38006000 r--s 00006000 fd:01 794563                     /root/.m2/repository/org/projectodd/wunderboss/wunderboss-web/0.12.2/wunderboss-web-0.12.2.jar
+7fab38006000-7fab38009000 r--s 0000a000 fd:01 794561                     /root/.m2/repository/org/projectodd/wunderboss/wunderboss-core/0.12.2/wunderboss-core-0.12.2.jar
+7fab38009000-7fab3800a000 r--s 00006000 fd:01 1067369                    /root/.m2/repository/bidi/bidi/2.1.2/bidi-2.1.2.jar
+7fab3800a000-7fab3800b000 r--s 00000000 fd:01 1301755                    /root/.m2/repository/org/clojure/java.classpath/0.2.3/java.classpath-0.2.3.jar
+7fab3800b000-7fab3800c000 r--s 00006000 fd:01 795164                     /root/.m2/repository/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Alpha3/jboss-transaction-api_1.2_spec-1.0.0.Alpha3.jar
+7fab3800c000-7fab3800d000 r--s 00002000 fd:01 780164                     /root/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar
+7fab3800d000-7fab3800f000 r--s 00005000 fd:01 795108                     /root/.m2/repository/org/jboss/spec/javax/transaction/jboss-transaction-api_1.1_spec/1.0.1.Final/jboss-transaction-api_1.1_spec-1.0.1.Final.jar
+7fab3800f000-7fab38010000 r--s 00003000 fd:01 795154                     /root/.m2/repository/javax/transaction/jta/1.1/jta-1.1.jar
+7fab38010000-7fab38012000 r--s 00009000 fd:01 794564                     /root/.m2/repository/org/jboss/spec/javax/websocket/jboss-websocket-api_1.1_spec/1.1.0.Final/jboss-websocket-api_1.1_spec-1.1.0.Final.jar
+7fab38012000-7fab38013000 r--s 0000a000 fd:01 1816986                    /root/.m2/repository/org/clojure/tools.reader/0.10.0/tools.reader-0.10.0.jar
+7fab38013000-7fab38015000 r--s 00013000 fd:01 1048378                    /root/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-smile/2.9.0/jackson-dataformat-smile-2.9.0.jar
+7fab38015000-7fab38016000 r--s 00009000 fd:01 780161                     /root/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar
+7fab38016000-7fab3801a000 r--s 0002b000 fd:01 794568                     /root/.m2/repository/org/jboss/spec/javax/servlet/jboss-servlet-api_3.1_spec/1.0.0.Final/jboss-servlet-api_3.1_spec-1.0.0.Final.jar
+7fab3801a000-7fab3801b000 r--s 00007000 fd:01 1299634                    /root/.m2/repository/org/clojure/tools.analyzer/0.6.9/tools.analyzer-0.6.9.jar
+7fab3801b000-7fab3801f000 r--s 00025000 fd:01 794579                     /root/.m2/repository/io/undertow/undertow-websockets-jsr/1.3.23.Final/undertow-websockets-jsr-1.3.23.Final.jar
+7fab3801f000-7fab38020000 r--s 00001000 fd:01 1301799                    /root/.m2/repository/ring/ring-ssl/0.3.0/ring-ssl-0.3.0.jar
+7fab38020000-7fab38021000 r--s 00004000 fd:01 795181                     /root/.m2/repository/org/immutant/messaging/2.1.8/messaging-2.1.8.jar
+7fab38021000-7fab38022000 r--s 00004000 fd:01 1048270                    /root/.m2/repository/com/stuartsierra/component/0.3.2/component-0.3.2.jar
+7fab38022000-7fab38024000 r--s 00006000 fd:01 795107                     /root/.m2/repository/org/projectodd/wunderboss/wunderboss-caching/0.13.1/wunderboss-caching-0.13.1.jar
+7fab38024000-7fab38026000 r--s 00006000 fd:01 1302240                    /root/.m2/repository/ring/ring-core/1.6.2/ring-core-1.6.2.jar
+7fab38026000-7fab38027000 r--s 00001000 fd:01 1301800                    /root/.m2/repository/ring/ring-headers/0.3.0/ring-headers-0.3.0.jar
+7fab38027000-7fab38028000 r--s 00001000 fd:01 1299773                    /root/.m2/repository/ring/ring-codec/1.0.1/ring-codec-1.0.1.jar
+7fab38028000-7fab38029000 r--s 00000000 fd:01 801632                     /root/.m2/repository/org/clojure/data.csv/0.1.3/data.csv-0.1.3.jar
+7fab38029000-7fab38050000 r--s 001e3000 fd:01 794574                     /root/.m2/repository/io/undertow/undertow-core/1.3.23.Final/undertow-core-1.3.23.Final.jar
+7fab38050000-7fab39000000 rw-p 00000000 00:00 0 
+7fab39000000-7fab39460000 rwxp 00000000 00:00 0 
+7fab39460000-7fab48000000 ---p 00000000 00:00 0 
+7fab48000000-7fab49161000 rw-p 00000000 00:00 0 
+7fab49161000-7fab4c000000 ---p 00000000 00:00 0 
+7fab4c000000-7fab4c001000 r--s 00007000 fd:01 783029                     /root/.m2/repository/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar
+7fab4c001000-7fab4c004000 r--s 00019000 fd:01 795121                     /root/.m2/repository/org/hornetq/hornetq-commons/2.4.5.Final/hornetq-commons-2.4.5.Final.jar
+7fab4c004000-7fab4c005000 r--s 0000b000 fd:01 1052745                    /root/.m2/repository/prismatic/schema/0.4.0/schema-0.4.0.jar
+7fab4c005000-7fab4c006000 r--s 00001000 fd:01 1301801                    /root/.m2/repository/ring/ring-anti-forgery/1.1.0/ring-anti-forgery-1.1.0.jar
+7fab4c006000-7fab4c007000 r--s 00002000 fd:01 795177                     /root/.m2/repository/org/immutant/caching/2.1.8/caching-2.1.8.jar
+7fab4c007000-7fab4c4bd000 rw-p 00000000 00:00 0 
+7fab4c4bd000-7fab4c697000 r--s 03d4d000 fd:01 527223                     /usr/lib/jvm/java-8-oracle/jre/lib/rt.jar
+7fab4c697000-7fab4c863000 rw-p 00000000 00:00 0 
+7fab4c863000-7fab4c864000 ---p 00000000 00:00 0 
+7fab4c864000-7fab4c964000 rw-p 00000000 00:00 0 
+7fab4c964000-7fab4c965000 ---p 00000000 00:00 0 
+7fab4c965000-7fab4ca70000 rw-p 00000000 00:00 0 
+7fab4ca70000-7fab4cb0c000 ---p 00000000 00:00 0 
+7fab4cb0c000-7fab4cb33000 rw-p 00000000 00:00 0 
+7fab4cb33000-7fab4cb60000 ---p 00000000 00:00 0 
+7fab4cb60000-7fab4cb73000 rw-p 00000000 00:00 0 
+7fab4cb73000-7fab4cf21000 ---p 00000000 00:00 0 
+7fab4cf21000-7fab4cf3b000 r-xp 00000000 fd:01 527254                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7fab4cf3b000-7fab4d13b000 ---p 0001a000 fd:01 527254                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7fab4d13b000-7fab4d13c000 rw-p 0001a000 fd:01 527254                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libzip.so
+7fab4d13c000-7fab4d147000 r-xp 00000000 fd:01 10331                      /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fab4d147000-7fab4d346000 ---p 0000b000 fd:01 10331                      /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fab4d346000-7fab4d347000 r--p 0000a000 fd:01 10331                      /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fab4d347000-7fab4d348000 rw-p 0000b000 fd:01 10331                      /lib/x86_64-linux-gnu/libnss_files-2.23.so
+7fab4d348000-7fab4d34e000 rw-p 00000000 00:00 0 
+7fab4d34e000-7fab4d359000 r-xp 00000000 fd:01 10335                      /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fab4d359000-7fab4d558000 ---p 0000b000 fd:01 10335                      /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fab4d558000-7fab4d559000 r--p 0000a000 fd:01 10335                      /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fab4d559000-7fab4d55a000 rw-p 0000b000 fd:01 10335                      /lib/x86_64-linux-gnu/libnss_nis-2.23.so
+7fab4d55a000-7fab4d570000 r-xp 00000000 fd:01 10315                      /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fab4d570000-7fab4d76f000 ---p 00016000 fd:01 10315                      /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fab4d76f000-7fab4d770000 r--p 00015000 fd:01 10315                      /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fab4d770000-7fab4d771000 rw-p 00016000 fd:01 10315                      /lib/x86_64-linux-gnu/libnsl-2.23.so
+7fab4d771000-7fab4d773000 rw-p 00000000 00:00 0 
+7fab4d773000-7fab4d77b000 r-xp 00000000 fd:01 10326                      /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fab4d77b000-7fab4d97a000 ---p 00008000 fd:01 10326                      /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fab4d97a000-7fab4d97b000 r--p 00007000 fd:01 10326                      /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fab4d97b000-7fab4d97c000 rw-p 00008000 fd:01 10326                      /lib/x86_64-linux-gnu/libnss_compat-2.23.so
+7fab4d97c000-7fab4d9a7000 r-xp 00000000 fd:01 527281                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7fab4d9a7000-7fab4dba6000 ---p 0002b000 fd:01 527281                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7fab4dba6000-7fab4dba8000 rw-p 0002a000 fd:01 527281                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libjava.so
+7fab4dba8000-7fab4dbb5000 r-xp 00000000 fd:01 527232                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7fab4dbb5000-7fab4ddb5000 ---p 0000d000 fd:01 527232                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7fab4ddb5000-7fab4ddb7000 rw-p 0000d000 fd:01 527232                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/libverify.so
+7fab4ddb7000-7fab4ddbe000 r-xp 00000000 fd:01 10336                      /lib/x86_64-linux-gnu/librt-2.23.so
+7fab4ddbe000-7fab4dfbd000 ---p 00007000 fd:01 10336                      /lib/x86_64-linux-gnu/librt-2.23.so
+7fab4dfbd000-7fab4dfbe000 r--p 00006000 fd:01 10336                      /lib/x86_64-linux-gnu/librt-2.23.so
+7fab4dfbe000-7fab4dfbf000 rw-p 00007000 fd:01 10336                      /lib/x86_64-linux-gnu/librt-2.23.so
+7fab4dfbf000-7fab4e0c7000 r-xp 00000000 fd:01 10314                      /lib/x86_64-linux-gnu/libm-2.23.so
+7fab4e0c7000-7fab4e2c6000 ---p 00108000 fd:01 10314                      /lib/x86_64-linux-gnu/libm-2.23.so
+7fab4e2c6000-7fab4e2c7000 r--p 00107000 fd:01 10314                      /lib/x86_64-linux-gnu/libm-2.23.so
+7fab4e2c7000-7fab4e2c8000 rw-p 00108000 fd:01 10314                      /lib/x86_64-linux-gnu/libm-2.23.so
+7fab4e2c8000-7fab4ef9b000 r-xp 00000000 fd:01 527285                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7fab4ef9b000-7fab4f19a000 ---p 00cd3000 fd:01 527285                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7fab4f19a000-7fab4f274000 rw-p 00cd2000 fd:01 527285                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so
+7fab4f274000-7fab4f2bf000 rw-p 00000000 00:00 0 
+7fab4f2bf000-7fab4f47f000 r-xp 00000000 fd:01 10318                      /lib/x86_64-linux-gnu/libc-2.23.so
+7fab4f47f000-7fab4f67f000 ---p 001c0000 fd:01 10318                      /lib/x86_64-linux-gnu/libc-2.23.so
+7fab4f67f000-7fab4f683000 r--p 001c0000 fd:01 10318                      /lib/x86_64-linux-gnu/libc-2.23.so
+7fab4f683000-7fab4f685000 rw-p 001c4000 fd:01 10318                      /lib/x86_64-linux-gnu/libc-2.23.so
+7fab4f685000-7fab4f689000 rw-p 00000000 00:00 0 
+7fab4f689000-7fab4f68c000 r-xp 00000000 fd:01 10320                      /lib/x86_64-linux-gnu/libdl-2.23.so
+7fab4f68c000-7fab4f88b000 ---p 00003000 fd:01 10320                      /lib/x86_64-linux-gnu/libdl-2.23.so
+7fab4f88b000-7fab4f88c000 r--p 00002000 fd:01 10320                      /lib/x86_64-linux-gnu/libdl-2.23.so
+7fab4f88c000-7fab4f88d000 rw-p 00003000 fd:01 10320                      /lib/x86_64-linux-gnu/libdl-2.23.so
+7fab4f88d000-7fab4f8a2000 r-xp 00000000 fd:01 527270                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7fab4f8a2000-7fab4faa2000 ---p 00015000 fd:01 527270                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7fab4faa2000-7fab4faa3000 rw-p 00015000 fd:01 527270                     /usr/lib/jvm/java-8-oracle/jre/lib/amd64/jli/libjli.so
+7fab4faa3000-7fab4fabb000 r-xp 00000000 fd:01 10317                      /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fab4fabb000-7fab4fcba000 ---p 00018000 fd:01 10317                      /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fab4fcba000-7fab4fcbb000 r--p 00017000 fd:01 10317                      /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fab4fcbb000-7fab4fcbc000 rw-p 00018000 fd:01 10317                      /lib/x86_64-linux-gnu/libpthread-2.23.so
+7fab4fcbc000-7fab4fcc0000 rw-p 00000000 00:00 0 
+7fab4fcc0000-7fab4fce6000 r-xp 00000000 fd:01 10316                      /lib/x86_64-linux-gnu/ld-2.23.so
+7fab4fce6000-7fab4fcec000 r--s 0003f000 fd:01 1052726                    /root/.m2/repository/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar
+7fab4fcec000-7fab4fced000 r--s 00001000 fd:01 1299753                    /root/.m2/repository/org/clojure/tools.macro/0.1.5/tools.macro-0.1.5.jar
+7fab4fced000-7fab4fcee000 r--s 00010000 fd:01 1297977                    /root/.m2/repository/datascript/datascript/0.16.2/datascript-0.16.2.jar
+7fab4fcee000-7fab4fcef000 r--s 00003000 fd:01 1299674                    /root/.m2/repository/org/clojure/java.jdbc/0.6.1/java.jdbc-0.6.1.jar
+7fab4fcef000-7fab4fcf1000 r--s 0000d000 fd:01 1299633                    /root/.m2/repository/org/clojure/core.async/0.3.443/core.async-0.3.443.jar
+7fab4fcf1000-7fab4fcf5000 r--s 0002f000 fd:01 1048284                    /root/.m2/repository/commons-io/commons-io/2.5/commons-io-2.5.jar
+7fab4fcf5000-7fab4fcf6000 r--s 00001000 fd:01 1032564                    /root/.m2/repository/tigris/tigris/0.1.1/tigris-0.1.1.jar
+7fab4fcf6000-7fab4fcf8000 r--s 0000c000 fd:01 1299761                    /root/.m2/repository/instaparse/instaparse/1.4.0/instaparse-1.4.0.jar
+7fab4fcf8000-7fab4fcfa000 r--s 00001000 fd:01 1817865                    /root/.m2/repository/dbprotocols/dbprotocols/0.1.21/dbprotocols-0.1.21.jar
+7fab4fcfa000-7fab4fd37000 rw-p 00000000 00:00 0 
+7fab4fd37000-7fab4fdd4000 ---p 00000000 00:00 0 
+7fab4fdd4000-7fab4fdd7000 ---p 00000000 00:00 0 
+7fab4fdd7000-7fab4feda000 rw-p 00000000 00:00 0 
+7fab4feda000-7fab4fedb000 r--s 00009000 fd:01 795126                     /root/.m2/repository/org/hornetq/hornetq-native/2.4.5.Final/hornetq-native-2.4.5.Final.jar
+7fab4fedb000-7fab4fee3000 rw-s 00000000 fd:01 9520                       /tmp/hsperfdata_root/7745
+7fab4fee3000-7fab4fee4000 rw-p 00000000 00:00 0 
+7fab4fee4000-7fab4fee5000 ---p 00000000 00:00 0 
+7fab4fee5000-7fab4fee6000 r--p 00025000 fd:01 10316                      /lib/x86_64-linux-gnu/ld-2.23.so
+7fab4fee6000-7fab4fee7000 rw-p 00026000 fd:01 10316                      /lib/x86_64-linux-gnu/ld-2.23.so
+7fab4fee7000-7fab4fee8000 rw-p 00000000 00:00 0 
+7ffee6ddb000-7ffee6dff000 rw-p 00000000 00:00 0                          [stack]
+7ffee6f2d000-7ffee6f30000 r--p 00000000 00:00 0                          [vvar]
+7ffee6f30000-7ffee6f32000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 -XX:-OmitStackTraceInFastThrow -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -Dclojure.compile.path=/progs/muchiniwamback/target/default/classes -Dmuchiniwamback.version=0.1.2 -Dclojure.debug=false 
+java_command: clojure.main -i /tmp/form-init69693485783973478.clj
+java_class_path (initial): /progs/muchiniwamback/test:/progs/muchiniwamback/src:/progs/muchiniwamback/dev-resources:/progs/muchiniwamback/resources:/progs/muchiniwamback/target/default/classes:/root/.m2/repository/dbprotocols/dbprotocols/0.1.21/dbprotocols-0.1.21.jar:/root/.m2/repository/instaparse/instaparse/1.4.0/instaparse-1.4.0.jar:/root/.m2/repository/org/hornetq/hornetq-native/2.4.5.Final/hornetq-native-2.4.5.Final.jar:/root/.m2/repository/tigris/tigris/0.1.1/tigris-0.1.1.jar:/root/.m2/repository/commons-io/commons-io/2.5/commons-io-2.5.jar:/root/.m2/repository/org/clojure/core.async/0.3.443/core.async-0.3.443.jar:/root/.m2/repository/org/clojure/java.jdbc/0.6.1/java.jdbc-0.6.1.jar:/root/.m2/repository/datascript/datascript/0.16.2/datascript-0.16.2.jar:/root/.m2/repository/org/clojure/tools.macro/0.1.5/tools.macro-0.1.5.jar:/root/.m2/repository/ch/qos/logback/logback-classic/1.1.3/logback-classic-1.1.3.jar:/root/.m2/repository/org/immutant/caching/2.1.8/caching-2.1.8.jar:/root/.m2/repository/ring/ring-anti-forgery/1.1.0/ring-anti-forgery-1.1.0.jar:/root/.m2/repository/prismatic/schema/0.4.0/schema-0.4.0.jar:/root/.m2/repository/org/hornetq/hornetq-commons/2.4.5.Final/hornetq-commons-2.4.5.Final.jar:/root/.m2/repository/io/undertow/undertow-core/1.3.23.Final/undertow-core-1.3.23.Final.jar:/root/.m2/repository/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar:/root/.m2/repository/org/clojure/data.csv/0.1.3/data.csv-0.1.3.jar:/root/.m2/repository/ring/ring-codec/1.0.1/ring-codec-1.0.1.jar:/root/.m2/repository/ring/ring-headers/0.3.0/ring-headers-0.3.0.jar:/root/.m2/repository/ring/ring-core/1.6.2/ring-core-1.6.2.jar:/root/.m2/repository/org/projectodd/wunderboss/wunderboss-caching/0.13.1/wunderboss-caching-0.13.1.jar:/root/.m2/repository/com/stuartsierra/component/0.3.2/component-0.3.2.jar:/root/.m2/repository/org/immutant/messaging/2.1.8/messaging-2.1.8.jar:/root/.m2/repository/ring/ring-ssl/0.3.0/ring-ssl-0.3.0.jar:/root/.m2/repository/io/undertow/undertow-webs
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=/usr/lib/jvm/java-8-oracle
+CLASSPATH=/root/.lein/self-installs/leiningen-2.8.0-standalone.jar
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-8-oracle/bin:/usr/lib/jvm/java-8-oracle/db/bin:/usr/lib/jvm/java-8-oracle/jre/bin
+SHELL=/bin/bash
+DISPLAY=localhost:10.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xacba10], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xacba10], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x924ba0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x924ba0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x924ba0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x924ba0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x9263e0], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: [libjvm.so+0x9277e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGINT: [libjvm.so+0x9277e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGTERM: [libjvm.so+0x9277e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGQUIT: [libjvm.so+0x9277e0], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
+
+uname:Linux 4.4.0-130-generic #156-Ubuntu SMP Thu Jun 14 08:53:28 UTC 2018 x86_64
+libc:glibc 2.23 NPTL 2.23 
+rlimit: STACK 8192k, CORE 0k, NPROC 7927, NOFILE 1048576, AS infinity
+load average:0.23 0.05 0.02
+
+/proc/meminfo:
+MemTotal:        2048076 kB
+MemFree:           72272 kB
+MemAvailable:      17744 kB
+Buffers:            2808 kB
+Cached:            54476 kB
+SwapCached:            0 kB
+Active:          1861136 kB
+Inactive:          36876 kB
+Active(anon):    1846768 kB
+Inactive(anon):    30552 kB
+Active(file):      14368 kB
+Inactive(file):     6324 kB
+Unevictable:        3652 kB
+Mlocked:            3652 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:               828 kB
+Writeback:             0 kB
+AnonPages:       1844460 kB
+Mapped:            27384 kB
+Shmem:             33992 kB
+Slab:              38780 kB
+SReclaimable:      21124 kB
+SUnreclaim:        17656 kB
+KernelStack:        5440 kB
+PageTables:        11732 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1024036 kB
+Committed_AS:    3306792 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       59372 kB
+DirectMap2M:     2037760 kB
+DirectMap1G:           0 kB
+
+
+CPU:total 2 (initial active 2) (1 cores per cpu, 1 threads per core) family 6 model 62 stepping 4, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, erms, tsc
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-2630L v2 @ 2.40GHz
+stepping	: 4
+microcode	: 0x1
+cpu MHz		: 2399.998
+cache size	: 15360 KB
+physical id	: 0
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl eagerfpu pni pclmulqdq vmx ssse3 cx16 pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust smep erms xsaveopt
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 4799.99
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 62
+model name	: Intel(R) Xeon(R) CPU E5-2630L v2 @ 2.40GHz
+stepping	: 4
+microcode	: 0x1
+cpu MHz		: 2399.998
+cache size	: 15360 KB
+physical id	: 1
+siblings	: 1
+core id		: 0
+cpu cores	: 1
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl eagerfpu pni pclmulqdq vmx ssse3 cx16 pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm kaiser tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust smep erms xsaveopt
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass
+bogomips	: 4799.99
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 40 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 2048076k(72272k free), swap 0k(0k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.144-b01) for linux-amd64 JRE (1.8.0_144-b01), built on Jul 21 2017 21:57:33 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Sun Sep 16 18:50:09 2018
+elapsed time: 3 seconds (0d 0h 0m 3s)
+
